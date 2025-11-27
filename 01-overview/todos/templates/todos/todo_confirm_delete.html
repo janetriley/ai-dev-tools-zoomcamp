@@ -1,0 +1,45 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}Delete TODO{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 20px;">
+    <a href="{% url 'todo_list' %}">&larr; Back to List</a>
+</div>
+
+<div style="
+    padding: 30px;
+    background-color: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 4px;
+    max-width: 600px;
+">
+    <h1 style="color: #856404; margin-bottom: 20px;">Confirm Deletion</h1>
+
+    <p style="margin-bottom: 20px; font-size: 16px;">
+        Are you sure you want to delete the following TODO?
+    </p>
+
+    <div style="
+        padding: 15px;
+        background-color: white;
+        border-left: 4px solid #dc3545;
+        margin-bottom: 20px;
+    ">
+        <h3 style="margin-bottom: 5px;">{{ todo.title }}</h3>
+        {% if todo.description %}
+        <p style="color: #6c757d;">{{ todo.description|truncatewords:30 }}</p>
+        {% endif %}
+    </div>
+
+    <p style="color: #721c24; margin-bottom: 20px; font-weight: 500;">
+        This action cannot be undone!
+    </p>
+
+    <form method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'todo_detail' todo.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

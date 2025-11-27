@@ -1,0 +1,58 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}Create TODO{% endblock %}
+
+{% block content %}
+<h1>Create New TODO</h1>
+
+<form method="post" style="max-width: 600px;">
+    {% csrf_token %}
+
+    <div style="margin-bottom: 20px;">
+        <label for="id_title" style="display: block; margin-bottom: 5px; font-weight: 500;">Title:</label>
+        {{ form.title }}
+        {% if form.title.errors %}
+        <div style="color: #dc3545; margin-top: 5px; font-size: 14px;">
+            {{ form.title.errors }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <label for="id_description" style="display: block; margin-bottom: 5px; font-weight: 500;">Description (optional):</label>
+        {{ form.description }}
+        {% if form.description.errors %}
+        <div style="color: #dc3545; margin-top: 5px; font-size: 14px;">
+            {{ form.description.errors }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div style="display: flex; gap: 10px;">
+        <button type="submit" class="btn">Create TODO</button>
+        <a href="{% url 'todo_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+<style>
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: inherit;
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    input[type="text"]:focus, textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+</style>
+{% endblock %}
