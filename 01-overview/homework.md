@@ -1,309 +1,178 @@
-# Homework 1: Introduction to AI Dev Tools Zoomcamp 2025
+# Introduction to AI-Assisted Development 
 
-**Course**: AI Dev Tools Zoomcamp 2025
-**Module**: 1 - Introduction to Vibe Coding
-**Due Date**: November 27, 2025 18:00 (local time)
+In this homework, we'll build an application with AI.
 
----
+You can use any tool you want: ChatGPT, Claude, GitHub Copilot, Codex, Cursor, Antigravity, etc.
 
-## Question 1. Install Django (1 point)
+With chat-based applications you will need to copy code back-and-forth, so we recommend that you use an AI assistant in your IDE with agent mode.
 
-**Answer**: ✅ **Completed**
+We will build a TODO application in Django.
 
-Django 5.2.8 has been installed using `uv` package manager.
+The app should be able to do the following:
 
-**Installation command**:
+- Create, edit and delete TODOs 
+- Assign due dates
+- Mark TODOs as resolved
+
+You will only need Python to get started (we also recommend that you use `uv`).
+
+You don't need to know Python or Django for doing this homework.
+
+
+## Question 1: Install Django
+
+We want to install Django. Ask AI to help you with that.
+
+What's the command you used for that?
+
+There could be multiple ways to do it. Put the one that AI suggested in the homework form.
+
+
+## Question 2: Project and App
+
+Now we need to create a project and an app for that.
+
+Follow the instructions from AI to do it. At some point, you will need to include the app you created in the project.
+
+What's the file you need to edit for that?
+
+- `settings.py`
+- `manage.py`
+- `urls.py`
+- `wsgi.py`
+
+
+## Question 3: Django Models
+
+Let's now proceed to creating models - the mapping from python objects to a relational database. 
+
+For the TODO app, which models do we need? Implement them.
+
+What's the next step you need to take?
+
+- Run the application
+- Add the models to the admin panel
+- Run migrations
+- Create a makefile
+
+
+## Question 4. TODO Logic
+
+Let's now ask AI to implement the logic for the TODO app. Where do we put it? 
+
+- `views.py`
+- `urls.py`
+- `admin.py`
+- `tests.py`
+
+
+## Question 5. Templates
+
+Next step is creating the templates. You will need at least two: the base one and the home one. Let's call them `base.html` and `home.html`.
+
+Where do you need to register the directory with the templates? 
+
+- `INSTALLED_APPS` in project's `settings.py`
+- `TEMPLATES['DIRS']` in project's `settings.py`
+- `TEMPLATES['APP_DIRS']` in project's `settings.py`
+- In the app's `urls.py`
+
+## Question 6. Tests
+
+Now let's ask AI to cover our functionality with tests.
+
+- Ask it which scenarios we should cover
+- Make sure they make sense
+- Let it implement it and run them 
+
+Probably it will require a few iterations to make sure that tests pass and evertyhing is working. 
+
+What's the command you use for running tests in the terminal? 
+
+- `pytest`
+- `python manage.py test`
+- `python -m django run_tests`
+- `django-admin test`
+
+## Running the app
+
+Now the application is developed and tested. Run it:
+
 ```bash
-uv add django
+python manage.py runserver
 ```
 
-**Verification**:
-```bash
-uv run django-admin --version
-# Output: 5.2.8
-```
+Since we asked AI to test everything, it should just work. If it doesn't, iterate with AI until it works. 
 
-**Files created**:
-- `pyproject.toml` - Contains Django dependency
-- `uv.lock` - Lock file with exact versions
+
+## Homework URL
+
+Commit your code to GitHub. You can create a repository for this course. Within the repository, create a folder, e.g. "01-todo", where you put the code.
+
+Use the link to this folder in the homework submission form. 
+
+
+## Tip
+
+You can copy-paste the homework description into the AI system of your choice. But make sure you understand (and follow) all the steps in the response.
+
+
+## Submission
+
+Submit your homework here: https://courses.datatalks.club/ai-dev-tools-2025/homework/hw1
+
+
+## Learning in Public
+
+We encourage everyone to share what they learned. This is called "learning in public". 
+
+Learning in public is one of the most effective ways to accelerate your growth. Here's why:
+
+1. Accountability: Sharing your progress creates commitment and motivation to continue
+2. Feedback: The community can provide valuable suggestions and corrections
+3. Networking: You'll connect with like-minded people and potential collaborators
+4. Documentation: Your posts become a learning journal you can reference later
+5. Opportunities: Employers and clients often discover talent through public learning
+
+Don't worry about being perfect. Everyone starts somewhere, and people love following genuine learning journeys!
+
+### Example post for LinkedIn:
+
+--- 
+🚀 Week 1 of AI Dev Tools Zoomcamp by @DataTalksClub complete!
+
+Just built a Django TODO application using AI assistants - without knowing Django beforehand!
+
+Today I learned how to:
+
+- ✅ Set up Django projects and apps
+- ✅ Create database models and migrations
+- ✅ Implement views and templates
+- ✅ Write comprehensive tests with AI help
+
+Here's my repo: <LINK>
+
+Following along with this amazing course - who else is exploring AI development tools? 
+
+You can sign up here: https://github.com/DataTalksClub/ai-dev-tools-zoomcamp/
 
 ---
 
-## Question 2. Project and App (1 point)
-
-**Answer**: ✅ **Completed**
-
-Django project `todo_project` and app `todos` have been created.
-
-**Commands used**:
-```bash
-uv run django-admin startproject todo_project .
-uv run python manage.py startapp todos
-```
-
-**Required files verified**:
-- ✅ `todo_project/settings.py` - Project settings
-- ✅ `manage.py` - Django management script
-- ✅ `todo_project/urls.py` - URL configuration
-- ✅ `todo_project/wsgi.py` - WSGI configuration
-- ✅ `todo_project/asgi.py` - ASGI configuration (bonus)
-
-**Project structure**:
-```
-01-overview/
-├── manage.py
-├── todo_project/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── asgi.py
-└── todos/
-    ├── models.py
-    ├── views.py
-    ├── admin.py
-    ├── tests.py
-    └── ...
-```
+### Example post for Twitter/X:
 
 ---
 
-## Question 3. Django Models (1 point)
+🤖 Built a Django app with AI in @Al_Grigor's AI Dev Tools Zoomcamp!
 
-**Answer**: ✅ **Completed**
+- ✨ TODO app from scratch
+- 📝 Models & migrations
+- 🎨 Views and templates
+- ✅ Tests
 
-### Todo Model Created
+My repo: <LINK>
 
-**File**: `todos/models.py`
+Zero Django knowledge → working app in one session!
 
-```python
-class Todo(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
-    completed = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering = ['-created_at']
-```
-
-### Tasks Completed:
-
-✅ **Run the application**
-```bash
-uv run python manage.py runserver
-# Application running at http://localhost:8000/
-```
-
-✅ **Add models to admin panel**
-**File**: `todos/admin.py`
-```python
-@admin.register(Todo)
-class TodoAdmin(admin.ModelAdmin):
-    list_display = ['title', 'completed', 'created_at', 'updated_at']
-    list_filter = ['completed', 'created_at']
-    search_fields = ['title', 'description']
-    list_editable = ['completed']
-```
-
-✅ **Run migrations**
-```bash
-uv run python manage.py makemigrations
-# Created: todos/migrations/0001_initial.py
-
-uv run python manage.py migrate
-# Applied all migrations successfully
-```
-
-✅ **Create Makefile**
-**File**: `Makefile`
-```makefile
-migrate:
-	uv run python manage.py migrate
-
-makemigrations:
-	uv run python manage.py makemigrations
-
-runserver:
-	uv run python manage.py runserver
-
-test:
-	uv run pytest
-
-shell:
-	uv run python manage.py shell
-```
+Join me: https://github.com/DataTalksClub/ai-dev-tools-zoomcamp/
 
 ---
-
-## Question 4. TODO Logic (1 point)
-
-**Answer**: ✅ **Completed**
-
-### Files Implemented:
-
-✅ **views.py** - `todos/views.py`
-- `TodoListView` - List all TODOs
-- `TodoCreateView` - Create new TODO
-- `TodoDetailView` - View TODO details
-- `TodoDeleteView` - Delete TODO
-- `toggle_todo` - Toggle completion status
-
-✅ **urls.py** - `todos/urls.py`
-```python
-urlpatterns = [
-    path('', views.TodoListView.as_view(), name='todo_list'),
-    path('create/', views.TodoCreateView.as_view(), name='todo_create'),
-    path('<int:pk>/', views.TodoDetailView.as_view(), name='todo_detail'),
-    path('<int:pk>/toggle/', views.toggle_todo, name='todo_toggle'),
-    path('<int:pk>/delete/', views.TodoDeleteView.as_view(), name='todo_delete'),
-]
-```
-
-✅ **admin.py** - Configured in Question 3 (see above)
-
-✅ **tests.py** - `todos/tests.py`
-- 23 comprehensive tests covering all functionality
-- Model tests (5 tests)
-- View tests (18 tests)
-- All tests passing
-
----
-
-## Question 5. Templates (1 point)
-
-**Answer**: ✅ **Completed**
-
-### Template Configuration:
-
-✅ **INSTALLED_APPS in settings.py**
-```python
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'todos',  # ← Added
-]
-```
-
-✅ **TEMPLATES['DIRS'] in settings.py**
-```python
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # Empty, using app-level templates
-        'APP_DIRS': True,
-        ...
-    }
-]
-```
-
-✅ **TEMPLATES['APP_DIRS'] in settings.py**
-```python
-'APP_DIRS': True  # ← Enabled for app-level templates
-```
-
-✅ **App's urls.py**
-- Created `todos/urls.py` with all URL patterns
-- Included in project's `urls.py`:
-```python
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('todos.urls')),
-]
-```
-
-### Templates Created:
-
-**Directory**: `todos/templates/todos/`
-
-- ✅ `base.html` - Base template with navigation and styling
-- ✅ `todo_list.html` - List all TODOs
-- ✅ `todo_form.html` - Create TODO form
-- ✅ `todo_detail.html` - TODO detail view
-- ✅ `todo_confirm_delete.html` - Delete confirmation
-
-All templates use template inheritance extending `base.html`.
-
----
-
-## Question 6. Tests (1 point)
-
-**Answer**: ✅ **Completed**
-
-### Test Suite: 23 Tests
-
-**File**: `todos/tests.py`
-
-### Test Results:
-
-✅ **pytest**
-```bash
-uv run pytest
-# ====== 23 passed in 0.13s ======
-```
-
-✅ **python manage.py test**
-```bash
-uv run python manage.py test
-# Ran 23 tests in 0.029s
-# OK
-```
-
-### Test Coverage:
-
-**Model Tests (5 tests)**:
-- ✅ test_todo_creation
-- ✅ test_todo_str_representation
-- ✅ test_todo_completion_toggle
-- ✅ test_todo_default_completed_is_false
-- ✅ test_todo_optional_description
-
-**View Tests (18 tests)**:
-- List View: 4 tests
-- Create View: 4 tests
-- Detail View: 4 tests
-- Toggle View: 2 tests
-- Delete View: 4 tests
-
-**All tests passing**: ✅ 23/23
-
----
-
-## Additional Information
-
-### Tools Used:
-- **AI Assistant**: Claude Code (Anthropic)
-- **Package Manager**: uv (Astral)
-- **Python**: 3.10.10
-- **Django**: 5.2.8
-- **Testing**: pytest 9.0.1, pytest-django 4.11.1
-
-### Project Features:
-- ✅ Full CRUD operations for TODOs
-- ✅ Admin panel integration
-- ✅ Responsive UI with inline CSS
-- ✅ Comprehensive test coverage
-- ✅ Clean, modern interface
-- ✅ Makefile for common commands
-
-### Documentation:
-- ✅ `PROJECT_README.md` - Complete setup and usage guide
-- ✅ `spec.md` - Project specification with checklist
-- ✅ `Makefile` - Common development commands
-- ✅ This homework submission
-
----
-
-## Status
-
-**Status**: ✅ **Completed**
-**All Questions**: 6/6 answered
-**All Tests**: 23/23 passing
-**Submission Date**: November 27, 2025
