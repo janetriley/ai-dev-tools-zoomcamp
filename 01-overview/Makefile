@@ -1,4 +1,4 @@
-.PHONY: migrate makemigrations runserver test shell
+.PHONY: migrate makemigrations runserver test shell lint format lint-fix
 
 migrate:
 	uv run python manage.py migrate
@@ -14,3 +14,12 @@ test:
 
 shell:
 	uv run python manage.py shell
+
+lint:
+	uv run ruff check .
+
+format:
+	uv run ruff format .
+
+lint-fix:
+	uv run ruff check --fix .
