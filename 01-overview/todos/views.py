@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DeleteView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .models import Todo
 
 
@@ -13,7 +13,14 @@ class TodoListView(ListView):
 class TodoCreateView(CreateView):
     model = Todo
     template_name = 'todos/todo_form.html'
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'due_date']
+    success_url = reverse_lazy('todo_list')
+
+
+class TodoUpdateView(UpdateView):
+    model = Todo
+    template_name = 'todos/todo_form.html'
+    fields = ['title', 'description', 'due_date']
     success_url = reverse_lazy('todo_list')
 
 

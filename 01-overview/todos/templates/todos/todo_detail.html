@@ -40,6 +40,9 @@
                 {% if todo.completed %}Completed{% else %}Pending{% endif %}
             </span>
         </p>
+        {% if todo.due_date %}
+        <p><strong>Due Date:</strong> {{ todo.due_date|date:"F d, Y" }}</p>
+        {% endif %}
         <p><strong>Created:</strong> {{ todo.created_at|date:"F d, Y g:i A" }}</p>
         <p><strong>Last Updated:</strong> {{ todo.updated_at|date:"F d, Y g:i A" }}</p>
     </div>
@@ -48,6 +51,7 @@
         <a href="{% url 'todo_toggle' todo.pk %}" class="btn {% if todo.completed %}btn-secondary{% else %}btn-success{% endif %}">
             {% if todo.completed %}Mark as Pending{% else %}Mark as Complete{% endif %}
         </a>
+        <a href="{% url 'todo_edit' todo.pk %}" class="btn">Edit</a>
         <a href="{% url 'todo_delete' todo.pk %}" class="btn btn-danger">Delete</a>
         <a href="{% url 'todo_list' %}" class="btn btn-secondary">Back to List</a>
     </div>

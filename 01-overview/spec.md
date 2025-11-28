@@ -42,6 +42,7 @@ Build a Django TODO application to demonstrate AI dev tools usage for the AI Dev
   - [x] Title (CharField)
   - [x] Description (TextField, optional)
   - [x] Completed (BooleanField)
+  - [x] Due date (DateField, optional)
   - [x] Created date (DateTimeField, auto)
   - [x] Updated date (DateTimeField, auto)
 - [x] Add `__str__` method to model
@@ -62,6 +63,7 @@ Build a Django TODO application to demonstrate AI dev tools usage for the AI Dev
 - [x] Create views in `todos/views.py`:
   - [x] List all TODOs (index/list view)
   - [x] Create new TODO (create view)
+  - [x] Edit TODO (update view)
   - [x] Mark TODO as complete/incomplete (toggle view)
   - [x] Delete TODO (delete view)
   - [x] Detail view for single TODO (optional)
@@ -116,8 +118,8 @@ Build a Django TODO application to demonstrate AI dev tools usage for the AI Dev
 
 ### Phase 8: Optional Enhancements
 
-- [ ] Add TODO editing functionality
-- [ ] Add due dates to TODOs
+- [x] Add TODO editing functionality
+- [x] Add due dates to TODOs
 - [ ] Add priority levels
 - [ ] Add filtering (completed/incomplete)
 - [ ] Add search functionality

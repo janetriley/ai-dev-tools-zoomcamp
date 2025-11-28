@@ -30,6 +30,9 @@
                 <p style="color: #6c757d; margin-bottom: 5px;">{{ todo.description|truncatewords:20 }}</p>
                 {% endif %}
                 <small style="color: #6c757d;">
+                    {% if todo.due_date %}
+                    <strong>Due: {{ todo.due_date|date:"M d, Y" }}</strong> |
+                    {% endif %}
                     Created: {{ todo.created_at|date:"M d, Y g:i A" }}
                     {% if todo.updated_at != todo.created_at %}
                     | Updated: {{ todo.updated_at|date:"M d, Y g:i A" }}
@@ -40,6 +43,7 @@
                 <a href="{% url 'todo_toggle' todo.pk %}" class="btn {% if todo.completed %}btn-secondary{% else %}btn-success{% endif %}">
                     {% if todo.completed %}Undo{% else %}Complete{% endif %}
                 </a>
+                <a href="{% url 'todo_edit' todo.pk %}" class="btn">Edit</a>
                 <a href="{% url 'todo_delete' todo.pk %}" class="btn btn-danger">Delete</a>
             </div>
         </div>

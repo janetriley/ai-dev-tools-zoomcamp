@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from datetime import date, timedelta
 from .models import Todo
 
 
@@ -45,6 +46,20 @@ class TodoModelTest(TestCase):
         """Test creating TODO without description"""
         todo = Todo.objects.create(title="No Description")
         self.assertEqual(todo.description, None)
+
+    def test_todo_with_due_date(self):
+        """Test creating TODO with due date"""
+        due_date = date.today() + timedelta(days=7)
+        todo = Todo.objects.create(
+            title="Due Date Test",
+            due_date=due_date
+        )
+        self.assertEqual(todo.due_date, due_date)
+
+    def test_todo_optional_due_date(self):
+        """Test creating TODO without due date"""
+        todo = Todo.objects.create(title="No Due Date")
+        self.assertIsNone(todo.due_date)
 
 
 class TodoListViewTest(TestCase):
@@ -116,6 +131,73 @@ class TodoCreateViewTest(TestCase):
         response = self.client.post(self.url, data)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Todo.objects.count(), 1)
+
+    def test_create_todo_with_due_date(self):
+        """Test creating TODO with due date"""
+        due_date = date.today() + timedelta(days=7)
+        data = {
+            'title': 'TODO with Due Date',
+            'due_date': due_date.strftime('%Y-%m-%d')
+        }
+        response = self.client.post(self.url, data)
+        self.assertEqual(response.status_code, 302)
+        todo = Todo.objects.first()
+        self.assertEqual(todo.due_date, due_date)
+
+
+class TodoUpdateViewTest(TestCase):
+    """Test the TODO update/edit view"""
+
+    def setUp(self):
+        self.todo = Todo.objects.create(
+            title="Original Title",
+            description="Original Description"
+        )
+        self.url = reverse('todo_edit', args=[self.todo.pk])
+
+    def test_update_view_status_code(self):
+        """Test that update view returns 200"""
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_update_view_uses_correct_template(self):
+        """Test that update view uses the correct template"""
+        response = self.client.get(self.url)
+        self.assertTemplateUsed(response, 'todos/todo_form.html')
+
+    def test_update_todo_post(self):
+        """Test updating a TODO via POST"""
+        data = {
+            'title': 'Updated Title',
+            'description': 'Updated Description'
+        }
+        response = self.client.post(self.url, data)
+        self.assertEqual(response.status_code, 302)  # Redirect after success
+
+        self.todo.refresh_from_db()
+        self.assertEqual(self.todo.title, 'Updated Title')
+        self.assertEqual(self.todo.description, 'Updated Description')
+
+    def test_update_todo_with_due_date(self):
+        """Test updating TODO to add due date"""
+        due_date = date.today() + timedelta(days=5)
+        data = {
+            'title': 'Updated with Due Date',
+            'description': 'Description',
+            'due_date': due_date.strftime('%Y-%m-%d')
+        }
+        response = self.client.post(self.url, data)
+        self.assertEqual(response.status_code, 302)
+
+        self.todo.refresh_from_db()
+        self.assertEqual(self.todo.title, 'Updated with Due Date')
+        self.assertEqual(self.todo.due_date, due_date)
+
+    def test_update_view_404_for_invalid_todo(self):
+        """Test that updating invalid TODO ID returns 404"""
+        url = reverse('todo_edit', args=[9999])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
 
 
 class TodoDetailViewTest(TestCase):
